@@ -13,6 +13,8 @@ from langchain.llms import OpenAIChat
 
 import openai
 import os
+import textwrap
+from typing import Optional
 
 template = """
 伊吹翼という少女を相手にした対話のシミュレーションを行います。
