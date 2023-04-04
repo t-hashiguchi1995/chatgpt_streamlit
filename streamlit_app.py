@@ -48,7 +48,7 @@ def create_conversational_chain(template):
     input_variables=["chat_history", "human_input"], 
     template=template)
     
-    llm = ChatOpenAI(
+    llm = OpenAIChat(
                     streaming=True,
                     callback_manager=CallbackManager([
                     StreamlitCallbackHandler(),
