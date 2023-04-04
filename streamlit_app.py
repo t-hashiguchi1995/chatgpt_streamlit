@@ -91,7 +91,7 @@ def main():
 
     API_KEY = st.text_input("Type your OPENAI_API_KEY here", type="password", key="api_key", help="You can get api_key at https://platform.openai.com/account/api-keys")
     set_openai_api_key(API_KEY)
-    chain = create_conversational_chain(template)
+    
     
     if "generated" not in st.session_state:
         st.session_state.generated = []
@@ -103,7 +103,7 @@ def main():
 
     submitted = st.form_submit_button("送信する")
     if submitted:
-        conversation = load_conversation()
+        chain = create_conversational_chain(template)
         answer = conversation.predict(input=user_message)
 
         st.session_state.past.append(user_message)
