@@ -77,7 +77,7 @@ def main():
     set_openai_api_key(API_KEY)
     
     if "generated" not in st.session_state:
-    st.session_state.generated = []
+        st.session_state.generated = []
     if "past" not in st.session_state:
         st.session_state.past = []
 
