@@ -11,6 +11,8 @@ from langchain.chains import ConversationChain
 from langchain import OpenAI, LLMChain, PromptTemplate
 from langchain.llms import OpenAIChat
 
+import openai
+import os
 
 template = """
 伊吹翼という少女を相手にした対話のシミュレーションを行います。
@@ -40,6 +42,20 @@ P: {human_input}
 prompt = PromptTemplate(
 input_variables=["chat_history", "human_input"], 
 template=template)
+
+
+
+@st.cache_resource
+def set_openai_api_key(API_KEY: Optional[str] = None):
+
+    if 'OPENAI_API_KEY' in os.environ:
+        openai.api_key = os.environ.get("OPENAI_API_KEY")
+
+    if API_KEY is not None:
+        openai.api_key = API_KEY
+
+    print("set API_KEY: ", openai.api_key)
+
 
 
 def create_conversational_chain(template):
