@@ -82,7 +82,7 @@ def main():
         st.session_state.past = []
 
     with st.form("伊吹翼と会話する"):
-    user_message = st.text_area("P:")
+        user_message = st.text_area("P:")
 
     submitted = st.form_submit_button("送信する")
     if submitted:
@@ -93,9 +93,9 @@ def main():
         st.session_state.generated.append(answer)
 
         if st.session_state["generated"]:
-        for i in range(len(st.session_state.generated) - 1, -1, -1):
-            message(st.session_state.generated[i], key=str(i))
-            message(st.session_state.past[i], is_user=True, key=str(i) + "_user")
+            for i in range(len(st.session_state.generated) - 1, -1, -1):
+                message(st.session_state.generated[i], key=str(i))
+                message(st.session_state.past[i], is_user=True, key=str(i) + "_user")
     
 if __name__ == "__main__":
     main()
